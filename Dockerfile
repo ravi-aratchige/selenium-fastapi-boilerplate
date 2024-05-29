@@ -30,7 +30,8 @@ RUN apt-get install -yqq unzip
 # RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`
 # curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE
 # `/chromedriver_linux64.zip
-RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/$(wget -qO- https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip
+# RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/$(wget -qO- https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip
+RUN wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/125.0.6422.78/chromedriver_linux64.zip
 
 # Unzip the Chrome Driver into /usr/local/bin directory
 RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
