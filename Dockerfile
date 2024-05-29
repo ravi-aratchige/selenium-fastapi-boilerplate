@@ -15,7 +15,7 @@ RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable 
 RUN apt-get -y update
 
 # Magic happens
-RUN apt-get install -y google-chrome-stable=114.0.5735.90-1
+RUN apt-get install -y google-chrome-stable=114.0.5735.90-1.el9
 
 
 # ------------------------------------------------------
