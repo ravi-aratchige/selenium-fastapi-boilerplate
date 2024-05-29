@@ -1,2 +1,2 @@
-"""Utilities needed for the Selenium and Koyeb Serverless Rest API.
+"""Utilities needed for the Selenium and FastAPI Rest API boilerplate.
 """

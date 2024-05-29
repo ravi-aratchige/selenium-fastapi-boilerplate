@@ -1,6 +1,6 @@
 """
 Boilerplate for Rest API that runs Selenium in headless mode
-on the Koyeb Serverless Platform using FastAPI.
+using FastAPI on a server (e.g. Koyeb Serverless Platform).
 
 This module is the entrypoint to the FastAPI application.
 """
