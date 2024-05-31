@@ -2,7 +2,6 @@
 #     PULLING THE IMAGE AND SETTING UP GOOGLE CHROME
 # ------------------------------------------------------
 
-
 FROM python:3.8
 
 # Set Chrome and Chromedriver versions
@@ -19,11 +18,9 @@ RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable 
 RUN apt-get -y update
 
 # Install Google Chrome
-# RUN apt-get install -y google-chrome-stable
-RUN wget --no-verbose -O /tmp/chrome.deb [https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb](https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_$%7BCHROME_VERSION%7D_amd64.deb) \
+RUN wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb \
   && apt install -y /tmp/chrome.deb \
   && rm /tmp/chrome.deb
-
 
 # ------------------------------------------------------
 #               INSTALLING CHROME DRIVER
@@ -31,24 +28,15 @@ RUN wget --no-verbose -O /tmp/chrome.deb [https://dl.google.com/linux/chrome/deb
 
 # Set Chromedriver path environment variable
 ENV CHROMEDRIVER_DIR /chromedriver
-RUN mkdir $CHROMEDRIVER_DIR 
+RUN mkdir $CHROMEDRIVER_DIR
 
 # Install Unzip
 RUN apt-get install -yqq unzip
 
 # Download the Chrome Driver
-# RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`
-# curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE
-# `/chromedriver_linux64.zip
-
-# RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/$(wget -qO- https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip
-
-# RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
-
 RUN wget -q --continue -P $CHROMEDRIVER_DIR "http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
 
 # Unzip the Chrome Driver into path directory
-# RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 RUN unzip $CHROMEDRIVER_DIR/chromedriver* -d $CHROMEDRIVER_DIR
 
 # Put Chromedriver into the PATH
@@ -57,11 +45,9 @@ ENV PATH $CHROMEDRIVER_DIR:$PATH
 # Set display port as an environment variable
 ENV DISPLAY=:99
 
-
 # ------------------------------------------------------
 #        RUNNING PYTHON APPLICATION WITH DOCKER
 # ------------------------------------------------------
-
 
 COPY . /app
 WORKDIR /app
