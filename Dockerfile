@@ -17,5 +17,11 @@ ENV DISPLAY=:99
 # upgrade pip
 RUN pip install --upgrade pip
 
-# install selenium
-RUN pip install selenium
+COPY . /app
+WORKDIR /app
+
+RUN pip install --upgrade pip
+
+RUN pip install -r requirements.txt
+
+CMD ["uvicorn", "app.app:app", "--host", "0.0.0.0", "--port", "8000"]
