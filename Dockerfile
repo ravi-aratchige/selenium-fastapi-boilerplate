@@ -15,7 +15,7 @@ RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable 
 RUN apt-get -y update
 
 # Magic happens
-RUN apt-get install -y google-chrome-stable=84.0.4147.30
+RUN apt-get install -y google-chrome-stable=72.0.3626.81
 
 
 # ------------------------------------------------------
@@ -31,7 +31,7 @@ RUN apt-get install -yqq unzip
 # curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE
 # `/chromedriver_linux64.zip
 # RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/$(wget -qO- https://chromedriver.storage.googleapis.com/LATEST_RELEASE)/chromedriver_linux64.zip
-RUN wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/84.0.4147.30/chromedriver_linux64.zip
+RUN wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/LATEST_RELEASE_72.0.3626/chromedriver_linux64.zip
 
 # Unzip the Chrome Driver into /usr/local/bin directory
 RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
