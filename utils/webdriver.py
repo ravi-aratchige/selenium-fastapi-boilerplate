@@ -1,16 +1,17 @@
-"""Set up Chrome options and other configurations for the Chrome webdriver.
+"""Set up browser options and other configurations for the webdriver.
 """
 
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
 
-def set_chrome_options() -> Options:
-    """Sets chrome options for Selenium.
+def set_chrome_options() -> ChromeOptions:
+    """Sets Chrome options for Selenium.
 
     Chrome options for headless browser is enabled.
     """
 
-    chrome_options = Options()
+    chrome_options = ChromeOptions()
 
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--no-sandbox")
@@ -21,3 +22,19 @@ def set_chrome_options() -> Options:
     chrome_prefs["profile.default_content_settings"] = {"images": 2}
 
     return chrome_options
+
+
+def set_firefox_options() -> FirefoxOptions:
+    """Sets Firefox options for Selenium."""
+
+    firefox_options = FirefoxOptions()
+
+    firefox_options.add_argument("--headless")
+    firefox_options.add_argument("--no-sandbox")
+    firefox_options.add_argument("--disable-dev-shm-usage")
+
+    # firefox_prefs = {}
+    # firefox_options.experimental_options["prefs"] = firefox_prefs
+    # firefox_prefs["profile.default_content_settings"] = {"images": 2}
+
+    return firefox_options

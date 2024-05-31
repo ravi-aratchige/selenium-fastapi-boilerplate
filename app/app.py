@@ -8,13 +8,13 @@ This module is the entrypoint to the FastAPI application.
 from fastapi import FastAPI
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from utils.webdriver import set_chrome_options
 from fastapi.middleware.cors import CORSMiddleware
+from utils.webdriver import set_chrome_options, set_firefox_options
 
 # Initialize FastAPI application
 app = FastAPI(
-    title="Selenium and Koyeb Serverless Boilerplate",
-    description="A boilerplate for running Selenium in headless mode on the Koyeb Serverless Platform",
+    title="Selenium and FastAPI Boilerplate",
+    description="A boilerplate for running Selenium in headless mode using FastAPI on the Koyeb Serverless Platform",
 )
 
 # Define allowed origins for CORS
