@@ -14,12 +14,10 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 # set display port to avoid crash
 ENV DISPLAY=:99
 
-# upgrade pip
-RUN pip install --upgrade pip
-
 COPY . /app
 WORKDIR /app
 
+# upgrade pip
 RUN pip install --upgrade pip
 
 RUN pip install -r requirements.txt
